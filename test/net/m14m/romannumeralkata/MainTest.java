@@ -22,6 +22,12 @@ public class MainTest {
         expectOutput("3\n");
     }
 
+    @Test public void readsAsMuchInputAsYouHave() throws IOException {
+        givenInput("II\nI\n");
+        whenIRunTheApp();
+        expectOutput("2\n1\n");
+    }
+
     private void givenInput(String input) {
         stdin = new StringReader(input);
     }
