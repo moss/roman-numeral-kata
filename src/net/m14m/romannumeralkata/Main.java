@@ -12,6 +12,7 @@ public class Main {
     }
 
     public void execute() {
+
         output.println("1");
     }
 }

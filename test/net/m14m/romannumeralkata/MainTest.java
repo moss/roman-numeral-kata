@@ -10,10 +10,16 @@ public class MainTest {
     private StringReader stdin;
     private StringWriter stdout = new StringWriter();
 
-    @Test public void shouldTranslateRomanNumeralsToArabic() {
+    @Test public void translatesRomanNumeralsToArabic() {
         givenInput("I\n");
         whenIRunTheApp();
         expectOutput("1\n");
+    }
+
+    @Test public void translatesNumbersCorrectly() {
+        givenInput("III\n");
+        whenIRunTheApp();
+        expectOutput("3\n");
     }
 
     private void givenInput(String input) {
