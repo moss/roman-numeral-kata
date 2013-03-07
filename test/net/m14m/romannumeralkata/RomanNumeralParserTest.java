@@ -13,27 +13,30 @@ import static org.junit.Assert.*;
 public class RomanNumeralParserTest {
     private int expectedValue;
     private String roman;
+    private final String message;
 
     @Parameterized.Parameters
-    public static List<Object[]> getParameters(){
+    public static List<Object[]> getParameters() {
         Object[][] parameters = {
-                {1, "I"},
-                {2, "II"},
-                {5, "V"},
-                {6, "VI"},
-                {6, "vi"},
-                {10, "X"},
-                {11, "XI"},
+                {1, "I", "I is 1"},
+                {2, "II", "multiples add up"},
+                {5, "V", "V is 5"},
+                {6, "VI", "combining letters"},
+                {6, "vi", "lowercase"},
+                {10, "X", "X is 10"},
+                {11, "XI", "adding on to X"},
         };
         return asList(parameters);
     }
 
-    public RomanNumeralParserTest(int expectedValue, String roman) {
+    public RomanNumeralParserTest(int expectedValue, String roman, String message) {
         this.expectedValue = expectedValue;
         this.roman = roman;
+        this.message = message;
     }
 
     @Test public void shouldTranslateRomanNumerals() {
-        assertEquals(roman, expectedValue, new RomanNumeralParser().translate(roman));
+        assertEquals(message + ": " + roman, expectedValue,
+                new RomanNumeralParser().translate(roman));
     }
 }
