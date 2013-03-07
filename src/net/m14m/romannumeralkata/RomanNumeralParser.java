@@ -22,13 +22,15 @@ public class RomanNumeralParser {
         int value = 0;
         char[] chars = input.toLowerCase().toCharArray();
         for (int i = 0; i < chars.length; i++) {
-            char prevChar = i == 0 ? 0 : chars[i - 1];
-            char curChar = chars[i];
-            int prevValue = valueOf(prevChar);
-            int charValue = valueOf(curChar);
-            if (charValue > prevValue) value -= (prevValue * 2);
-            value += charValue;
-            prevValue = charValue;
+            char currChar = chars[i];
+            char nextChar = (i+1 == chars.length) ? 0 : chars[i + 1];
+            int currValue = valueOf(currChar);
+            int nextValue = valueOf(nextChar);
+            if (nextValue > currValue) {
+                value -= currValue;
+            } else {
+                value += currValue;
+            }
         }
         return value;
     }
