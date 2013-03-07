@@ -11,9 +11,14 @@ public class RomanNumeralParser {
 
     int translate(String input) {
         int value = 0;
-        for (char c : input.toLowerCase().toCharArray()) {
+        char[] chars = input.toLowerCase().toCharArray();
+        int prevValue = 0;
+        for (char c : chars) {
             if (!valuesOfLetters.containsKey(c)) return -1;
-            value += valuesOfLetters.get(c);
+            int charValue = valuesOfLetters.get(c);
+            if (charValue > prevValue) value -= (prevValue * 2);
+            value += charValue;
+            prevValue = charValue;
         }
         return value;
     }
