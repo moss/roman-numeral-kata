@@ -25,6 +25,7 @@ public class RomanNumeralParserTest {
                 {6, "vi", "lowercase"},
                 {10, "X", "X is 10"},
                 {11, "XI", "adding on to X"},
+                {-1, "foo", "errors become -1"},
         };
         return asList(parameters);
     }
