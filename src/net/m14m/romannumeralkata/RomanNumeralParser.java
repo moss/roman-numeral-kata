@@ -13,7 +13,8 @@ public class RomanNumeralParser {
         int value = 0;
         char[] chars = input.toLowerCase().toCharArray();
         int prevValue = 0;
-        for (char c : chars) {
+        for (int i = 0; i < chars.length; i++) {
+            char c = chars[i];
             if (!valuesOfLetters.containsKey(c)) return -1;
             int charValue = valuesOfLetters.get(c);
             if (charValue > prevValue) value -= (prevValue * 2);
