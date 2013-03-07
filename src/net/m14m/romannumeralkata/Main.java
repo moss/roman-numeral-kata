@@ -11,8 +11,8 @@ public class Main {
         this.output = new PrintWriter(output);
     }
 
-    public void execute() {
-
-        output.println("1");
+    public void execute() throws IOException {
+        String input = this.input.readLine();
+        output.println(input.length());
     }
 }

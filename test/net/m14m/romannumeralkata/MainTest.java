@@ -10,13 +10,13 @@ public class MainTest {
     private StringReader stdin;
     private StringWriter stdout = new StringWriter();
 
-    @Test public void translatesRomanNumeralsToArabic() {
+    @Test public void translatesRomanNumeralsToArabic() throws IOException {
         givenInput("I\n");
         whenIRunTheApp();
         expectOutput("1\n");
     }
 
-    @Test public void translatesNumbersCorrectly() {
+    @Test public void translatesNumbersCorrectly() throws IOException {
         givenInput("III\n");
         whenIRunTheApp();
         expectOutput("3\n");
@@ -26,7 +26,7 @@ public class MainTest {
         stdin = new StringReader(input);
     }
 
-    private void whenIRunTheApp() {
+    private void whenIRunTheApp() throws IOException {
         new Main(stdin, stdout).execute();
     }
 
