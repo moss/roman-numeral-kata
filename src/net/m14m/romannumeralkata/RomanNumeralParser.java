@@ -1,12 +1,18 @@
 package net.m14m.romannumeralkata;
 
+import java.util.*;
+
 public class RomanNumeralParser {
+    private static Map<Character, Integer> valuesOfLetters = new HashMap<Character, Integer>() {{
+        put('i', 1);
+        put('v', 5);
+        put('x', 10);
+    }};
+
     int translate(String input) {
         int value = 0;
         for (char c : input.toLowerCase().toCharArray()) {
-            if (c == 'i') value += 1;
-            if (c == 'v') value += 5;
-            if (c == 'x') value += 10;
+            value += valuesOfLetters.get(c);
         }
         return value;
     }
