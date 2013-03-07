@@ -4,6 +4,7 @@ import java.util.*;
 
 public class RomanNumeralParser {
     private static Map<Character, Integer> valuesOfLetters = new HashMap<Character, Integer>() {{
+        put((char) 0, 0);
         put('i', 1);
         put('v', 5);
         put('x', 10);
@@ -20,10 +21,11 @@ public class RomanNumeralParser {
     private int translateUnsafe(String input) throws UnknownCharacterException {
         int value = 0;
         char[] chars = input.toLowerCase().toCharArray();
-        int prevValue = 0;
         for (int i = 0; i < chars.length; i++) {
-            char c = chars[i];
-            int charValue = valueOf(c);
+            char prevChar = i == 0 ? 0 : chars[i - 1];
+            char curChar = chars[i];
+            int prevValue = valueOf(prevChar);
+            int charValue = valueOf(curChar);
             if (charValue > prevValue) value -= (prevValue * 2);
             value += charValue;
             prevValue = charValue;
