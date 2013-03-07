@@ -21,6 +21,7 @@ public class RomanNumeralParserTest {
                 {2, "II"},
                 {5, "V"},
                 {6, "VI"},
+                {6, "vi"},
         };
         return asList(parameters);
     }
@@ -31,6 +32,6 @@ public class RomanNumeralParserTest {
     }
 
     @Test public void shouldTranslateRomanNumerals() {
-        assertEquals(expectedValue, new RomanNumeralParser().translate(roman));
+        assertEquals(roman, expectedValue, new RomanNumeralParser().translate(roman));
     }
 }
