@@ -12,7 +12,9 @@ public class Main {
     }
 
     public void execute() throws IOException {
-        String input = this.input.readLine();
-        output.println(input.length());
+        String input;
+        while ((input = this.input.readLine()) != null) {
+            output.println(input.length());
+        }
     }
 }
