@@ -5,6 +5,7 @@ import java.io.*;
 public class Main {
     private final BufferedReader input;
     private final PrintWriter output;
+    private final RomanNumeralParser romanNumeralParser = new RomanNumeralParser();
 
     public Main(Reader input, Writer output) {
         this.input = new BufferedReader(input);
@@ -14,11 +15,7 @@ public class Main {
     public void execute() throws IOException {
         String input;
         while ((input = this.input.readLine()) != null) {
-            output.println(translate(input));
+            output.println(romanNumeralParser.translate(input));
         }
-    }
-
-    private String translate(String input) {
-        return String.valueOf(input.length());
     }
 }
