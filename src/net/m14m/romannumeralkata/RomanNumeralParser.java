@@ -1,6 +1,7 @@
 package net.m14m.romannumeralkata;
 
-public class RomanNumeralParser {
+public class
+        RomanNumeralParser {
     public RomanNumeralParser() {
     }
 
