@@ -17,7 +17,8 @@ public class RomanNumeralParserTest {
     @Parameterized.Parameters
     public static List<Object[]> getParameters(){
         Object[][] parameters = {
-                {1, "I"}
+                {1, "I"},
+                {2, "II"},
         };
         return asList(parameters);
     }
