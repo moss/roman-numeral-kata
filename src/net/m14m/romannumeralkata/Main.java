@@ -14,7 +14,11 @@ public class Main {
     public void execute() throws IOException {
         String input;
         while ((input = this.input.readLine()) != null) {
-            output.println(input.length());
+            output.println(translate(input));
         }
+    }
+
+    private String translate(String input) {
+        return String.valueOf(input.length());
     }
 }
