@@ -12,6 +12,7 @@ public class RomanNumeralParser {
     int translate(String input) {
         int value = 0;
         for (char c : input.toLowerCase().toCharArray()) {
+            if (!valuesOfLetters.containsKey(c)) return -1;
             value += valuesOfLetters.get(c);
         }
         return value;
