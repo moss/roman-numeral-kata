@@ -6,6 +6,7 @@ public class RomanNumeralParser {
         for (char c : input.toLowerCase().toCharArray()) {
             if (c == 'i') value += 1;
             if (c == 'v') value += 5;
+            if (c == 'x') value += 10;
         }
         return value;
     }
