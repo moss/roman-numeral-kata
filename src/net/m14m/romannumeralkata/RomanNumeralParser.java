@@ -6,12 +6,12 @@ public class RomanNumeralParser {
     int translate(String input) {
         try {
             return translateUnsafe(input);
-        } catch (UnknownCharacterException e) {
+        } catch (RomanNumeralSymbol.UnrecognizedException e) {
             return -1;
         }
     }
 
-    private int translateUnsafe(String input) throws UnknownCharacterException {
+    private int translateUnsafe(String input) throws RomanNumeralSymbol.UnrecognizedException {
         Accumulator accumulator = new Accumulator();
         char[] chars = input.toLowerCase().toCharArray();
         for (int i = 0; i < chars.length; i++) {
@@ -28,9 +28,6 @@ public class RomanNumeralParser {
         return accumulator.getValue();
     }
 
-    private static class UnknownCharacterException extends Exception {
-    }
-
     public static class RomanNumeralSymbol {
         private static Map<Character, Integer> valuesOfLetters = new HashMap<Character, Integer>() {{
             put((char) 0, 0);
@@ -40,8 +37,8 @@ public class RomanNumeralParser {
         }};
         public final int value;
 
-        public static RomanNumeralSymbol valueOf(char c) throws UnknownCharacterException {
-            if (!valuesOfLetters.containsKey(c)) throw new UnknownCharacterException();
+        public static RomanNumeralSymbol valueOf(char c) throws UnrecognizedException {
+            if (!valuesOfLetters.containsKey(c)) throw new UnrecognizedException();
             return new RomanNumeralSymbol(valuesOfLetters.get(c));
         }
 
@@ -51,6 +48,9 @@ public class RomanNumeralParser {
 
         public boolean outranks(RomanNumeralSymbol symbol) {
             return value > symbol.value;
+        }
+
+        public static class UnrecognizedException extends Exception {
         }
     }
 }
