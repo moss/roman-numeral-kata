@@ -7,21 +7,21 @@ public class Accumulator {
     private RomanNumeralSymbol latestSymbol = nullSymbol();
 
     public void push(RomanNumeralSymbol symbol) {
-        something(latestSymbol, symbol);
+        combineValues(latestSymbol, symbol);
         latestSymbol = symbol;
     }
 
-    public void something(RomanNumeralSymbol currSymbol, RomanNumeralSymbol nextSymbol) {
+    public int getValue() {
+        combineValues(latestSymbol, nullSymbol());
+        return value;
+    }
+
+    private void combineValues(RomanNumeralSymbol currSymbol, RomanNumeralSymbol nextSymbol) {
         latestSymbol = nextSymbol;
         if (nextSymbol.outranks(currSymbol)) {
             value -= currSymbol.value;
         } else {
             value += currSymbol.value;
         }
-    }
-
-    public int getValue() {
-        something(latestSymbol, nullSymbol());
-        return value;
     }
 }
