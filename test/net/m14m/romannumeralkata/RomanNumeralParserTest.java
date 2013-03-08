@@ -28,6 +28,7 @@ public class RomanNumeralParserTest {
                 {-1, "foo", "errors become -1"},
                 {4, "IV", "lower value before higher value subtracts"},
                 {9, "IX", "lower value before higher value subtracts"},
+//                {8, "IIX", "multiple lower values in a row"},
         };
         return asList(parameters);
     }
