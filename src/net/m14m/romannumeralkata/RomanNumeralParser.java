@@ -24,22 +24,30 @@ public class RomanNumeralParser {
         for (int i = 0; i < chars.length; i++) {
             char currChar = chars[i];
             char nextChar = (i+1 == chars.length) ? 0 : chars[i + 1];
-            int currValue = valueOf(currChar);
-            int nextValue = valueOf(nextChar);
-            if (nextValue > currValue) {
-                accumulator.value -= currValue;
+            RomanNumeralSymbol currSymbol = valueOf(currChar);
+            RomanNumeralSymbol nextSymbol = valueOf(nextChar);
+            if (nextSymbol.value > currSymbol.value) {
+                accumulator.value -= currSymbol.value;
             } else {
-                accumulator.value += currValue;
+                accumulator.value += currSymbol.value;
             }
         }
         return accumulator.value;
     }
 
-    private int valueOf(char c) throws UnknownCharacterException {
+    private RomanNumeralSymbol valueOf(char c) throws UnknownCharacterException {
         if (!valuesOfLetters.containsKey(c)) throw new UnknownCharacterException();
-        return valuesOfLetters.get(c);
+        return new RomanNumeralSymbol(valuesOfLetters.get(c));
     }
 
     private static class UnknownCharacterException extends Exception {
+    }
+
+    public static class RomanNumeralSymbol {
+        public final int value;
+
+        public RomanNumeralSymbol(int value) {
+            this.value = value;
+        }
     }
 }
