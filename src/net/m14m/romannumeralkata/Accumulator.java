@@ -18,10 +18,9 @@ public class Accumulator {
 
     private void combineValues(RomanNumeralSymbol currSymbol, RomanNumeralSymbol nextSymbol) {
         latestSymbol = nextSymbol;
+        value += currSymbol.value;
         if (nextSymbol.outranks(currSymbol)) {
-            value -= currSymbol.value;
-        } else {
-            value += currSymbol.value;
+            value = -value;
         }
     }
 }
