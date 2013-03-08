@@ -5,18 +5,10 @@ public class Accumulator {
 
     public void something(RomanNumeralSymbol currSymbol, RomanNumeralSymbol nextSymbol) {
         if (nextSymbol.outranks(currSymbol)) {
-            subtract(currSymbol);
+            value -= currSymbol.value;
         } else {
-            add(currSymbol);
+            value += currSymbol.value;
         }
-    }
-
-    public void add(RomanNumeralSymbol currSymbol) {
-        value += currSymbol.value;
-    }
-
-    public void subtract(RomanNumeralSymbol currSymbol) {
-        value -= currSymbol.value;
     }
 
     public int getValue() {
