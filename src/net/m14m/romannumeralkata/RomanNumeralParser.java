@@ -17,19 +17,8 @@ public class RomanNumeralParser {
         for (int i = 0; i < chars.length; i++) {
             char currChar = chars[i];
             char nextChar = (i+1 == chars.length) ? 0 : chars[i + 1];
-            something(accumulator, valueOf(currChar), valueOf(nextChar));
+            accumulator.something(valueOf(currChar), valueOf(nextChar));
         }
         return accumulator.getValue();
-    }
-
-    private void something(Accumulator accumulator,
-                           RomanNumeralSymbol currSymbol,
-                           RomanNumeralSymbol nextSymbol)
-            throws RomanNumeralSymbol.UnrecognizedException {
-        if (nextSymbol.outranks(currSymbol)) {
-            accumulator.subtract(currSymbol);
-        } else {
-            accumulator.add(currSymbol);
-        }
     }
 }
