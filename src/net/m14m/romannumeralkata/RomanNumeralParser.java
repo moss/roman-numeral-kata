@@ -32,7 +32,7 @@ public class RomanNumeralParser {
                 accumulator.add(currSymbol);
             }
         }
-        return accumulator.value;
+        return accumulator.getValue();
     }
 
     private RomanNumeralSymbol valueOf(char c) throws UnknownCharacterException {
