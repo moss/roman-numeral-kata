@@ -26,18 +26,13 @@ public class RomanNumeralParser {
             char nextChar = (i+1 == chars.length) ? 0 : chars[i + 1];
             RomanNumeralSymbol currSymbol = valueOf(currChar);
             RomanNumeralSymbol nextSymbol = valueOf(nextChar);
-            if (outranks(currSymbol, nextSymbol)) {
+            if (nextSymbol.outranks(currSymbol)) {
                 accumulator.value -= currSymbol.value;
             } else {
                 accumulator.value += currSymbol.value;
             }
         }
         return accumulator.value;
-    }
-
-    public static boolean outranks(RomanNumeralSymbol currSymbol,
-                             RomanNumeralSymbol nextSymbol) {
-        return nextSymbol.value > currSymbol.value;
     }
 
     private RomanNumeralSymbol valueOf(char c) throws UnknownCharacterException {
@@ -53,6 +48,10 @@ public class RomanNumeralParser {
 
         public RomanNumeralSymbol(int value) {
             this.value = value;
+        }
+
+        public boolean outranks(RomanNumeralSymbol symbol) {
+            return value > symbol.value;
         }
     }
 }
