@@ -3,7 +3,7 @@ package net.m14m.romannumeralkata;
 import java.util.*;
 
 public class RomanNumeralSymbol {
-    private static Map<Character, Integer> valuesOfLetters = new HashMap<Character, Integer>() {{
+    private static final Map<Character, Integer> valuesOfLetters = new HashMap<Character, Integer>() {{
         put((char) 0, 0);
         put('i', 1);
         put('v', 5);
@@ -16,7 +16,7 @@ public class RomanNumeralSymbol {
         return new RomanNumeralSymbol(valuesOfLetters.get(c));
     }
 
-    public RomanNumeralSymbol(int value) {
+    private RomanNumeralSymbol(int value) {
         this.value = value;
     }
 
