@@ -1,6 +1,5 @@
 package net.m14m.romannumeralkata;
 
-import static net.m14m.romannumeralkata.RomanNumeralSymbol.nullSymbol;
 import static net.m14m.romannumeralkata.RomanNumeralSymbol.valueOf;
 
 public class RomanNumeralParser {
@@ -16,9 +15,7 @@ public class RomanNumeralParser {
         Accumulator accumulator = new Accumulator();
         char[] chars = input.toLowerCase().toCharArray();
         for (int i = 0; i < chars.length; i++) {
-            RomanNumeralSymbol currChar = valueOf(chars[i]);
-            RomanNumeralSymbol nextChar = (i + 1 == chars.length) ? nullSymbol() : valueOf(chars[i + 1]);
-            accumulator.something(currChar, nextChar);
+            accumulator.push(valueOf(chars[i]));
         }
         return accumulator.getValue();
     }
