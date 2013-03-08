@@ -9,11 +9,16 @@ public class RomanNumeralSymbol {
         put('v', 5);
         put('x', 10);
     }};
+
     public final int value;
 
     public static RomanNumeralSymbol valueOf(char c) throws UnrecognizedException {
         if (!valuesOfLetters.containsKey(c)) throw new UnrecognizedException();
         return new RomanNumeralSymbol(valuesOfLetters.get(c));
+    }
+
+    public static RomanNumeralSymbol nullSymbol() {
+        return new RomanNumeralSymbol(0);
     }
 
     private RomanNumeralSymbol(int value) {
