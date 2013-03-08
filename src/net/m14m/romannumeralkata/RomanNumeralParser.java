@@ -19,7 +19,7 @@ public class RomanNumeralParser {
     }
 
     private int translateUnsafe(String input) throws UnknownCharacterException {
-        int value = 0;
+        Accumulator accumulator = new Accumulator();
         char[] chars = input.toLowerCase().toCharArray();
         for (int i = 0; i < chars.length; i++) {
             char currChar = chars[i];
@@ -27,12 +27,13 @@ public class RomanNumeralParser {
             int currValue = valueOf(currChar);
             int nextValue = valueOf(nextChar);
             if (nextValue > currValue) {
-                value -= currValue;
+                accumulator.value -= currValue;
             } else {
-                value += currValue;
+                accumulator.value += currValue;
+
             }
         }
-        return value;
+        return accumulator.value;
     }
 
     private int valueOf(char c) throws UnknownCharacterException {
@@ -41,5 +42,9 @@ public class RomanNumeralParser {
     }
 
     private static class UnknownCharacterException extends Exception {
+    }
+
+    public static class Accumulator {
+        public int value = 0;
     }
 }
