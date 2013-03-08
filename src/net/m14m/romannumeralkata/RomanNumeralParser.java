@@ -30,7 +30,6 @@ public class RomanNumeralParser {
                 accumulator.value -= currValue;
             } else {
                 accumulator.value += currValue;
-
             }
         }
         return accumulator.value;
@@ -42,9 +41,5 @@ public class RomanNumeralParser {
     }
 
     private static class UnknownCharacterException extends Exception {
-    }
-
-    public static class Accumulator {
-        public int value = 0;
     }
 }
