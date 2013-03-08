@@ -3,9 +3,7 @@ package net.m14m.romannumeralkata;
 public class Accumulator {
     private int value = 0;
 
-    public void something(RomanNumeralSymbol currSymbol,
-                          RomanNumeralSymbol nextSymbol)
-            throws RomanNumeralSymbol.UnrecognizedException {
+    public void something(RomanNumeralSymbol currSymbol, RomanNumeralSymbol nextSymbol) {
         if (nextSymbol.outranks(currSymbol)) {
             subtract(currSymbol);
         } else {
