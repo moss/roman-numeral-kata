@@ -27,9 +27,9 @@ public class RomanNumeralParser {
             RomanNumeralSymbol currSymbol = valueOf(currChar);
             RomanNumeralSymbol nextSymbol = valueOf(nextChar);
             if (nextSymbol.outranks(currSymbol)) {
-                accumulator.value -= currSymbol.value;
+                accumulator.subtract(currSymbol);
             } else {
-                accumulator.value += currSymbol.value;
+                accumulator.add(currSymbol);
             }
         }
         return accumulator.value;
