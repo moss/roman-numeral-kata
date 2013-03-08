@@ -1,5 +1,7 @@
 package net.m14m.romannumeralkata;
 
+import static net.m14m.romannumeralkata.RomanNumeralSymbol.valueOf;
+
 public class RomanNumeralParser {
     int translate(String input) {
         try {
@@ -15,14 +17,19 @@ public class RomanNumeralParser {
         for (int i = 0; i < chars.length; i++) {
             char currChar = chars[i];
             char nextChar = (i+1 == chars.length) ? 0 : chars[i + 1];
-            RomanNumeralSymbol currSymbol = RomanNumeralSymbol.valueOf(currChar);
-            RomanNumeralSymbol nextSymbol = RomanNumeralSymbol.valueOf(nextChar);
-            if (nextSymbol.outranks(currSymbol)) {
-                accumulator.subtract(currSymbol);
-            } else {
-                accumulator.add(currSymbol);
-            }
+            something(accumulator, valueOf(currChar), valueOf(nextChar));
         }
         return accumulator.getValue();
+    }
+
+    private void something(Accumulator accumulator,
+                           RomanNumeralSymbol currSymbol,
+                           RomanNumeralSymbol nextSymbol)
+            throws RomanNumeralSymbol.UnrecognizedException {
+        if (nextSymbol.outranks(currSymbol)) {
+            accumulator.subtract(currSymbol);
+        } else {
+            accumulator.add(currSymbol);
+        }
     }
 }
