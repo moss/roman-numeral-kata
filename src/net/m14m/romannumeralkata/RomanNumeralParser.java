@@ -3,13 +3,6 @@ package net.m14m.romannumeralkata;
 import java.util.*;
 
 public class RomanNumeralParser {
-    private static Map<Character, Integer> valuesOfLetters = new HashMap<Character, Integer>() {{
-        put((char) 0, 0);
-        put('i', 1);
-        put('v', 5);
-        put('x', 10);
-    }};
-
     int translate(String input) {
         try {
             return translateUnsafe(input);
@@ -24,8 +17,8 @@ public class RomanNumeralParser {
         for (int i = 0; i < chars.length; i++) {
             char currChar = chars[i];
             char nextChar = (i+1 == chars.length) ? 0 : chars[i + 1];
-            RomanNumeralSymbol currSymbol = valueOf(currChar);
-            RomanNumeralSymbol nextSymbol = valueOf(nextChar);
+            RomanNumeralSymbol currSymbol = RomanNumeralSymbol.valueOf(currChar);
+            RomanNumeralSymbol nextSymbol = RomanNumeralSymbol.valueOf(nextChar);
             if (nextSymbol.outranks(currSymbol)) {
                 accumulator.subtract(currSymbol);
             } else {
@@ -35,16 +28,22 @@ public class RomanNumeralParser {
         return accumulator.getValue();
     }
 
-    private RomanNumeralSymbol valueOf(char c) throws UnknownCharacterException {
-        if (!valuesOfLetters.containsKey(c)) throw new UnknownCharacterException();
-        return new RomanNumeralSymbol(valuesOfLetters.get(c));
-    }
-
     private static class UnknownCharacterException extends Exception {
     }
 
     public static class RomanNumeralSymbol {
+        private static Map<Character, Integer> valuesOfLetters = new HashMap<Character, Integer>() {{
+            put((char) 0, 0);
+            put('i', 1);
+            put('v', 5);
+            put('x', 10);
+        }};
         public final int value;
+
+        public static RomanNumeralSymbol valueOf(char c) throws UnknownCharacterException {
+            if (!valuesOfLetters.containsKey(c)) throw new UnknownCharacterException();
+            return new RomanNumeralSymbol(valuesOfLetters.get(c));
+        }
 
         public RomanNumeralSymbol(int value) {
             this.value = value;
