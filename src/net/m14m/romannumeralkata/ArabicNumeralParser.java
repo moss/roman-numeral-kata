@@ -5,7 +5,6 @@ import java.util.*;
 import static java.util.Arrays.asList;
 
 public class ArabicNumeralParser {
-    private static final Symbol NULL = new Symbol(0, "");
     private static final List<Symbol> SYMBOLS = asList(
             new Symbol(50, "L"),
             new Symbol(10, "X"),
@@ -29,7 +28,9 @@ public class ArabicNumeralParser {
         for (Symbol symbol : SYMBOLS) {
             if (remainingValue >= symbol.value) return symbol;
         }
-        return NULL;
+        throw new RuntimeException(
+                "Programmer error: No symbol was small enough to absorb the remaining value of "
+                        + remainingValue);
     }
 
     private static class Symbol {
