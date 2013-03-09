@@ -5,15 +5,12 @@ import java.util.*;
 import static java.util.Arrays.asList;
 
 public class ArabicNumeralParser {
-    private static final Symbol I = new Symbol(1, "I");
-    private static final Symbol V = new Symbol(5, "V");
-    private static final Symbol X = new Symbol(10, "X");
     private static final Symbol NULL = new Symbol(0, "");
     private static final List<Symbol> SYMBOLS = asList(
             new Symbol(50, "L"),
-            X,
-            V,
-            I
+            new Symbol(10, "X"),
+            new Symbol(5, "V"),
+            new Symbol(1, "I")
     );
 
     public String translate(Integer value) {
