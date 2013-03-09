@@ -19,6 +19,7 @@ public class ArabicNumeralParserTest {
     public static List<Object[]> getParameters() {
         Object[][] parameters = {
                 {"I", 1, "I is 1"},
+                {"III", 3, "III is 3"},
         };
         return asList(parameters);
     }
