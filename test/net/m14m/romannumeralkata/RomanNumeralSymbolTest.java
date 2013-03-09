@@ -3,8 +3,7 @@ package net.m14m.romannumeralkata;
 import org.junit.*;
 
 import static net.m14m.romannumeralkata.RomanNumeralSymbol.valueOf;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 public class RomanNumeralSymbolTest {
     @Test public void biggerNumbersOutrankSmaller() throws RomanNumeralSymbol.UnrecognizedException {
@@ -23,6 +22,10 @@ public class RomanNumeralSymbolTest {
         assertFalse("I", valueOf('i').outranks(valueOf('i')));
         assertFalse("V", valueOf('v').outranks(valueOf('v')));
         assertFalse("X", valueOf('x').outranks(valueOf('x')));
+    }
+
+    @Test public void treatsCapitalsInterchangeablyWithLowercase() throws RomanNumeralSymbol.UnrecognizedException {
+        assertEquals(valueOf('i'), valueOf('I'));
     }
 
     @Test(expected = RomanNumeralSymbol.UnrecognizedException.class)

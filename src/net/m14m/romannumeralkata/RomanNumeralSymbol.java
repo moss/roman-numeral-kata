@@ -16,6 +16,7 @@ public class RomanNumeralSymbol {
     public final int value;
 
     public static RomanNumeralSymbol valueOf(char c) throws UnrecognizedException {
+        c = Character.toLowerCase(c);
         if (!valuesOfLetters.containsKey(c)) throw new UnrecognizedException();
         return new RomanNumeralSymbol(valuesOfLetters.get(c));
     }
