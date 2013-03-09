@@ -7,8 +7,13 @@ public class ArabicNumeralParser {
         int remainingValue = value;
         while (remainingValue > 0) {
             RomanNumeralSymbol symbol = largestRelevantSymbol(remainingValue);
-            result.append(symbol);
-            remainingValue -= symbol.value;
+            if (largestRelevantSymbol(remainingValue + 1).value > symbol.value) {
+                result.append("I");
+                remainingValue += 1;
+            } else {
+                result.append(symbol);
+                remainingValue -= symbol.value;
+            }
         }
         return result.toString();
     }
