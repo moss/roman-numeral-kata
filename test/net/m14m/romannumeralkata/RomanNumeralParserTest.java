@@ -21,7 +21,9 @@ public class RomanNumeralParserTest {
                 {-1, "foo", "errors become -1"},
                 {1, "I", "I is 1"},
                 {2, "II", "multiples add up"},
+                {3, "III", "more multiples add up"},
                 {4, "IV", "lower value before higher value subtracts"},
+                {4, "IIII", "supersticious four"},
                 {5, "V", "V is 5"},
                 {6, "VI", "combining letters"},
                 {6, "vi", "lowercase"},
@@ -30,6 +32,8 @@ public class RomanNumeralParserTest {
                 {10, "X", "X is 10"},
                 {11, "XI", "adding on to X"},
                 {14, "XIV", "alternating higher and lower values"},
+                {19, "XIX", "same symbol in different roles"},
+                {28, "XXVIII", "longer numbers"},
         };
         return asList(parameters);
     }
