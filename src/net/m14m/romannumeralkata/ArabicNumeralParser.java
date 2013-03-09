@@ -2,6 +2,7 @@ package net.m14m.romannumeralkata;
 
 public class ArabicNumeralParser {
     public String translate(Integer value) {
+        if (value <= 0) return "ERROR";
         StringBuilder result = new StringBuilder();
         int remainingValue = value;
         while (remainingValue > 0) {

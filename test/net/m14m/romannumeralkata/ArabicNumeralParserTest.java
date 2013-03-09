@@ -18,6 +18,8 @@ public class ArabicNumeralParserTest {
     @Parameterized.Parameters
     public static List<Object[]> getParameters() {
         Object[][] parameters = {
+                {"ERROR", 0, "0 is forbidden"},
+                {"ERROR", -1, "negatives are forbidden"},
                 {"I", 1, "I is 1"},
                 {"III", 3, "III is 3"},
                 {"V", 5, "V is 5"},
