@@ -6,6 +6,9 @@ import static java.util.Arrays.asList;
 
 public class ArabicNumeralParser {
     private static final List<Symbol> SYMBOLS = asList(
+            new Symbol(1000, "M"),
+            new Symbol(500, "D"),
+            new Symbol(100, "C"),
             new Symbol(50, "L"),
             new Symbol(10, "X"),
             new Symbol(5, "V"),
