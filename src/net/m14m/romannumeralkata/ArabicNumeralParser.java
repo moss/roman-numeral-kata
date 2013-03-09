@@ -5,12 +5,13 @@ public class ArabicNumeralParser {
         StringBuilder result = new StringBuilder();
         int remainingValue = value;
         while (remainingValue > 0) {
-            if (value == 5) {
+            if (remainingValue >= 5) {
                 result.append("V");
-                break;
+                remainingValue -= 5;
+            } else {
+                result.append("I");
+                remainingValue -= 1;
             }
-            result.append("I");
-            remainingValue--;
         }
         return result.toString();
     }
