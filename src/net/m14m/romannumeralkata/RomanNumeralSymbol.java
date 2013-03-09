@@ -2,7 +2,18 @@ package net.m14m.romannumeralkata;
 
 import java.util.*;
 
+import static java.util.Arrays.asList;
+
 public class RomanNumeralSymbol {
+    public static final List<RomanNumeralSymbol> ALL_SYMBOLS = asList(
+            new RomanNumeralSymbol("M", 1000),
+            new RomanNumeralSymbol("D", 500),
+            new RomanNumeralSymbol("C", 100),
+            new RomanNumeralSymbol("L", 50),
+            new RomanNumeralSymbol("X", 10),
+            new RomanNumeralSymbol("V", 5),
+            new RomanNumeralSymbol("I", 1)
+    );
     private static final Map<Character, Integer> valuesOfLetters = new HashMap<Character, Integer>() {{
         put('i', 1);
         put('v', 5);
@@ -26,7 +37,7 @@ public class RomanNumeralSymbol {
         return new RomanNumeralSymbol("", 0);
     }
 
-    RomanNumeralSymbol(String symbol, int value) {
+    private RomanNumeralSymbol(String symbol, int value) {
         this.symbol = symbol;
         this.value = value;
     }

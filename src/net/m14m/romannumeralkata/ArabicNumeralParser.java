@@ -1,20 +1,6 @@
 package net.m14m.romannumeralkata;
 
-import java.util.*;
-
-import static java.util.Arrays.asList;
-
 public class ArabicNumeralParser {
-    private static final List<RomanNumeralSymbol> SYMBOLS = asList(
-            new RomanNumeralSymbol("M", 1000),
-            new RomanNumeralSymbol("D", 500),
-            new RomanNumeralSymbol("C", 100),
-            new RomanNumeralSymbol("L", 50),
-            new RomanNumeralSymbol("X", 10),
-            new RomanNumeralSymbol("V", 5),
-            new RomanNumeralSymbol("I", 1)
-    );
-
     public String translate(Integer value) {
         if (value <= 0) return "ERROR";
         StringBuilder result = new StringBuilder();
@@ -28,7 +14,7 @@ public class ArabicNumeralParser {
     }
 
     private RomanNumeralSymbol largestRelevantSymbol(int remainingValue) {
-        for (RomanNumeralSymbol symbol : SYMBOLS) {
+        for (RomanNumeralSymbol symbol : RomanNumeralSymbol.ALL_SYMBOLS) {
             if (remainingValue >= symbol.value) return symbol;
         }
         throw new RuntimeException(
