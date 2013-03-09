@@ -11,7 +11,7 @@ public class ArabicNumeralParser {
             } else if (remainingValue >= 5) {
                 result.append("V");
                 remainingValue -= 5;
-            } else {
+            } else if (remainingValue >= 1) {
                 result.append("I");
                 remainingValue -= 1;
             }
