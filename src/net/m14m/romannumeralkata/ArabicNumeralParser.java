@@ -1,10 +1,15 @@
 package net.m14m.romannumeralkata;
 
+import java.util.*;
+
+import static java.util.Arrays.asList;
+
 public class ArabicNumeralParser {
     private static final Symbol I = new Symbol(1, "I");
     private static final Symbol V = new Symbol(5, "V");
     private static final Symbol X = new Symbol(10, "X");
     private static final Symbol NULL = new Symbol(0, "");
+    private static final List<Symbol> SYMBOLS = asList(X, V, I);
 
     public String translate(Integer value) {
         if (value <= 0) return "ERROR";
@@ -19,15 +24,10 @@ public class ArabicNumeralParser {
     }
 
     private Symbol largestRelevantSymbol(int remainingValue) {
-        Symbol currentSymbol = NULL;
-        if (remainingValue >= X.value) {
-            currentSymbol = X;
-        } else if (remainingValue >= V.value) {
-            currentSymbol = V;
-        } else if (remainingValue >= I.value) {
-            currentSymbol = I;
+        for (Symbol symbol : SYMBOLS) {
+            if (remainingValue >= symbol.value) return symbol;
         }
-        return currentSymbol;
+        return NULL;
     }
 
     private static class Symbol {
