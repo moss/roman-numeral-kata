@@ -15,7 +15,11 @@ public class Main {
     public void execute() throws IOException {
         String input;
         while ((input = this.input.readLine()) != null) {
-            output.println(romanNumeralParser.translate(input));
+            if (input.matches("[mdclxviMDCLXVI]+")) {
+                output.println(romanNumeralParser.translate(input));
+            } else {
+                output.println("I");
+            }
         }
     }
 }
