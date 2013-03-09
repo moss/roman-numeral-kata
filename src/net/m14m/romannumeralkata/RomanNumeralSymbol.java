@@ -5,7 +5,14 @@ import java.util.*;
 import static java.util.Arrays.asList;
 
 public class RomanNumeralSymbol {
-    public static final List<RomanNumeralSymbol> ALL_SYMBOLS = asList(
+    public static class RomanNumeralSystem {
+        public final List<RomanNumeralSymbol> symbols;
+
+        public RomanNumeralSystem(RomanNumeralSymbol... symbols) {
+            this.symbols = asList(symbols);
+        }
+    }
+    public static final List<RomanNumeralSymbol> ALL_SYMBOLS = new RomanNumeralSystem(
             new RomanNumeralSymbol("M", 1000),
             new RomanNumeralSymbol("D", 500),
             new RomanNumeralSymbol("C", 100),
@@ -13,7 +20,7 @@ public class RomanNumeralSymbol {
             new RomanNumeralSymbol("X", 10),
             new RomanNumeralSymbol("V", 5),
             new RomanNumeralSymbol("I", 1)
-    );
+    ).symbols;
     private static final Map<Character, RomanNumeralSymbol> valuesOfLetters;
 
     static {
