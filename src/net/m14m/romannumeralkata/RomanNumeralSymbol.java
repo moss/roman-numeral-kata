@@ -13,24 +13,30 @@ public class RomanNumeralSymbol {
         put('m', 1000);
     }};
 
+    private final String symbol;
     public final int value;
 
     public static RomanNumeralSymbol valueOf(char c) throws UnrecognizedException {
         c = Character.toLowerCase(c);
         if (!valuesOfLetters.containsKey(c)) throw new UnrecognizedException();
-        return new RomanNumeralSymbol(valuesOfLetters.get(c));
+        return new RomanNumeralSymbol(Character.toString(c).toUpperCase(), valuesOfLetters.get(c));
     }
 
     public static RomanNumeralSymbol nullSymbol() {
-        return new RomanNumeralSymbol(0);
+        return new RomanNumeralSymbol("", 0);
     }
 
-    private RomanNumeralSymbol(int value) {
+    private RomanNumeralSymbol(String symbol, int value) {
+        this.symbol = symbol;
         this.value = value;
     }
 
     public boolean outranks(RomanNumeralSymbol symbol) {
         return value > symbol.value;
+    }
+
+    @Override public String toString() {
+        return symbol;
     }
 
     public static class UnrecognizedException extends Exception {
