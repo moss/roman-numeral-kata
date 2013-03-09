@@ -26,18 +26,21 @@ public class RomanNumeralSymbol {
                 valuesOfLetters.put(symbol.toChar(), symbol);
             }
         }
+
+        public RomanNumeralSymbol valueOf(char c) throws UnrecognizedException {
+            c = Character.toUpperCase(c);
+            if (!valuesOfLetters.containsKey(c)) throw new UnrecognizedException();
+            return valuesOfLetters.get(c);
+        }
     }
 
     public static final List<RomanNumeralSymbol> ALL_SYMBOLS = STANDARD.symbols;
-    private static final Map<Character, RomanNumeralSymbol> valuesOfLetters = STANDARD.valuesOfLetters;
 
     private final String symbol;
     public final int value;
 
     public static RomanNumeralSymbol valueOf(char c) throws UnrecognizedException {
-        c = Character.toUpperCase(c);
-        if (!valuesOfLetters.containsKey(c)) throw new UnrecognizedException();
-        return valuesOfLetters.get(c);
+        return STANDARD.valueOf(c);
     }
 
     public static RomanNumeralSymbol nullSymbol() {
