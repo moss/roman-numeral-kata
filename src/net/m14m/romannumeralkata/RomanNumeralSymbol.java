@@ -14,15 +14,14 @@ public class RomanNumeralSymbol {
             new RomanNumeralSymbol("V", 5),
             new RomanNumeralSymbol("I", 1)
     );
-    private static final Map<Character, Integer> valuesOfLetters = new HashMap<Character, Integer>() {{
-        put('i', 1);
-        put('v', 5);
-        put('x', 10);
-        put('l', 50);
-        put('c', 100);
-        put('d', 500);
-        put('m', 1000);
-    }};
+    private static final Map<Character, RomanNumeralSymbol> valuesOfLetters;
+
+    static {
+        valuesOfLetters = new HashMap<Character, RomanNumeralSymbol>();
+        for (RomanNumeralSymbol symbol : ALL_SYMBOLS) {
+            valuesOfLetters.put(Character.toLowerCase(symbol.toChar()), symbol);
+        }
+    }
 
     private final String symbol;
     public final int value;
@@ -30,7 +29,7 @@ public class RomanNumeralSymbol {
     public static RomanNumeralSymbol valueOf(char c) throws UnrecognizedException {
         c = Character.toLowerCase(c);
         if (!valuesOfLetters.containsKey(c)) throw new UnrecognizedException();
-        return new RomanNumeralSymbol(Character.toString(c).toUpperCase(), valuesOfLetters.get(c));
+        return valuesOfLetters.get(c);
     }
 
     public static RomanNumeralSymbol nullSymbol() {
@@ -44,6 +43,10 @@ public class RomanNumeralSymbol {
 
     public boolean outranks(RomanNumeralSymbol symbol) {
         return value > symbol.value;
+    }
+
+    private Character toChar() {
+        return symbol.charAt(0);
     }
 
     @Override public String toString() {
