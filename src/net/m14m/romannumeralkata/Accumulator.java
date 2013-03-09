@@ -7,15 +7,15 @@ public class Accumulator {
     private RomanNumeralSymbol latestSymbol = nullSymbol();
 
     public void push(RomanNumeralSymbol symbol) {
-        combineValues(latestSymbol, symbol);
+        combineValues(symbol);
     }
 
     public int getValue() {
-        combineValues(latestSymbol, nullSymbol());
+        combineValues(nullSymbol());
         return value;
     }
 
-    private void combineValues(RomanNumeralSymbol currSymbol, RomanNumeralSymbol nextSymbol) {
+    private void combineValues(RomanNumeralSymbol nextSymbol) {
         value += latestSymbol.value;
         if (nextSymbol.outranks(latestSymbol)) {
             value = -value;
