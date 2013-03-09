@@ -20,6 +20,7 @@ public class ArabicNumeralParserTest {
         Object[][] parameters = {
                 {"I", 1, "I is 1"},
                 {"III", 3, "III is 3"},
+//                {"V", 5, "V is 5"},
         };
         return asList(parameters);
     }
