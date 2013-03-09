@@ -2,41 +2,42 @@ package net.m14m.romannumeralkata;
 
 import org.junit.*;
 
-import static net.m14m.romannumeralkata.RomanNumeralSymbol.valueOf;
+import static net.m14m.romannumeralkata.RomanNumeralSystem.STANDARD;
 import static org.junit.Assert.*;
 
 public class RomanNumeralSymbolTest {
     @Test public void biggerNumbersOutrankSmaller() throws UnrecognizedSymbolException {
-        assertTrue("V > I", valueOf('v').outranks(valueOf('i')));
-        assertTrue("X > V", valueOf('x').outranks(valueOf('v')));
-        assertTrue("X > I", valueOf('x').outranks(valueOf('i')));
+        assertTrue("V > I", STANDARD.valueOf('v').outranks(STANDARD.valueOf('i')));
+        assertTrue("X > V", STANDARD.valueOf('x').outranks(STANDARD.valueOf('v')));
+        assertTrue("X > I", STANDARD.valueOf('x').outranks(STANDARD.valueOf('i')));
     }
 
     @Test public void smallerNumbersDoNotOutrankBigger() throws UnrecognizedSymbolException {
-        assertFalse("V > I", valueOf('i').outranks(valueOf('v')));
-        assertFalse("X > V", valueOf('v').outranks(valueOf('x')));
-        assertFalse("X > I", valueOf('i').outranks(valueOf('x')));
+        assertFalse("V > I", STANDARD.valueOf('i').outranks(STANDARD.valueOf('v')));
+        assertFalse("X > V", STANDARD.valueOf('v').outranks(STANDARD.valueOf('x')));
+        assertFalse("X > I", STANDARD.valueOf('i').outranks(STANDARD.valueOf('x')));
     }
 
     @Test public void equalsDoNotOutrankEquals() throws UnrecognizedSymbolException {
-        assertFalse("I", valueOf('i').outranks(valueOf('i')));
-        assertFalse("V", valueOf('v').outranks(valueOf('v')));
-        assertFalse("X", valueOf('x').outranks(valueOf('x')));
+        assertFalse("I", STANDARD.valueOf('i').outranks(STANDARD.valueOf('i')));
+        assertFalse("V", STANDARD.valueOf('v').outranks(STANDARD.valueOf('v')));
+        assertFalse("X", STANDARD.valueOf('x').outranks(STANDARD.valueOf('x')));
     }
 
     @Test public void treatsCapitalsInterchangeablyWithLowercase() throws UnrecognizedSymbolException {
-        assertEquals(valueOf('i'), valueOf('I'));
+        assertEquals(STANDARD.valueOf('i'), STANDARD.valueOf('I'));
     }
 
     @Test public void toStringIsTheRomanNumeralSymbolInQuestion() throws UnrecognizedSymbolException {
-        assertEquals("I", valueOf('i').toString());
-        assertEquals("V", valueOf('v').toString());
-        assertEquals("M", valueOf('m').toString());
+        assertEquals("I", STANDARD.valueOf('i').toString());
+        assertEquals("V", STANDARD.valueOf('v').toString());
+        assertEquals("M", STANDARD.valueOf('m').toString());
     }
 
     @Test(expected = UnrecognizedSymbolException.class)
     public void throwsExceptionForUnrecognizedCharacters()
-            throws UnrecognizedSymbolException { valueOf('Z');
+            throws UnrecognizedSymbolException {
+        STANDARD.valueOf('Z');
     }
 
     @Test public void symbolsAreOnlyEqualToTheSameSymbol() throws UnrecognizedSymbolException {
@@ -49,16 +50,20 @@ public class RomanNumeralSymbolTest {
     }
 
     private void assertConsistentlyEqual(char oneChar, char otherChar) throws UnrecognizedSymbolException {
-        assertTrue(oneChar + " = " + otherChar, valueOf(oneChar).equals(valueOf(otherChar)));
-        assertTrue(otherChar + " = " + oneChar, valueOf(otherChar).equals(valueOf(oneChar)));
+        assertTrue(oneChar + " = " + otherChar, STANDARD.valueOf(oneChar)
+                .equals(STANDARD.valueOf(otherChar)));
+        assertTrue(otherChar + " = " + oneChar, STANDARD.valueOf(otherChar)
+                .equals(STANDARD.valueOf(oneChar)));
         assertTrue(oneChar + " hashcode = " + otherChar + " hashcode",
-                valueOf(oneChar).hashCode() == valueOf(otherChar).hashCode());
+                STANDARD.valueOf(oneChar).hashCode() == STANDARD.valueOf(otherChar).hashCode());
     }
 
     private void assertConsistentlyUnequal(char oneChar, char otherChar) throws UnrecognizedSymbolException {
-        assertFalse(oneChar + " != " + otherChar, valueOf(oneChar).equals(valueOf(otherChar)));
-        assertFalse(otherChar + " != " + oneChar, valueOf(otherChar).equals(valueOf(oneChar)));
+        assertFalse(oneChar + " != " + otherChar, STANDARD.valueOf(oneChar)
+                .equals(STANDARD.valueOf(otherChar)));
+        assertFalse(otherChar + " != " + oneChar, STANDARD.valueOf(otherChar)
+                .equals(STANDARD.valueOf(oneChar)));
         assertFalse(oneChar + " hashcode != " + otherChar + " hashcode",
-                valueOf(oneChar).hashCode() == valueOf(otherChar).hashCode());
+                STANDARD.valueOf(oneChar).hashCode() == STANDARD.valueOf(otherChar).hashCode());
     }
 }

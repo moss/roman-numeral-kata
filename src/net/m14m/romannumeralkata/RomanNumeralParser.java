@@ -1,6 +1,6 @@
 package net.m14m.romannumeralkata;
 
-import static net.m14m.romannumeralkata.RomanNumeralSymbol.valueOf;
+import static net.m14m.romannumeralkata.RomanNumeralSystem.STANDARD;
 
 public class RomanNumeralParser {
     int translate(String input) {
@@ -15,7 +15,7 @@ public class RomanNumeralParser {
         Accumulator accumulator = new Accumulator();
         char[] chars = input.toLowerCase().toCharArray();
         for (int i = 0; i < chars.length; i++) {
-            accumulator.push(valueOf(chars[i]));
+            accumulator.push(STANDARD.valueOf(chars[i]));
         }
         return accumulator.getValue();
     }

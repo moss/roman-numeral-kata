@@ -1,5 +1,7 @@
 package net.m14m.romannumeralkata;
 
+import static net.m14m.romannumeralkata.RomanNumeralSystem.STANDARD;
+
 public class ArabicNumeralParser {
     public String translate(Integer value) {
         if (value <= 0) return "ERROR";
@@ -19,7 +21,7 @@ public class ArabicNumeralParser {
     }
 
     private RomanNumeralSymbol largestRelevantSymbol(int remainingValue) {
-        for (RomanNumeralSymbol symbol : RomanNumeralSymbol.ALL_SYMBOLS) {
+        for (RomanNumeralSymbol symbol : STANDARD.symbols) {
             if (remainingValue >= symbol.value) return symbol;
         }
         throw new RuntimeException(

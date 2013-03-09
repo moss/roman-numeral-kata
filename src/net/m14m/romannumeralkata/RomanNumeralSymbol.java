@@ -1,17 +1,8 @@
 package net.m14m.romannumeralkata;
 
-import java.util.*;
-
-import static net.m14m.romannumeralkata.RomanNumeralSystem.STANDARD;
-
 public class RomanNumeralSymbol {
-    public static final List<RomanNumeralSymbol> ALL_SYMBOLS = STANDARD.symbols;
     private final String symbol;
     public final int value;
-
-    public static RomanNumeralSymbol valueOf(char c) throws UnrecognizedSymbolException {
-        return STANDARD.valueOf(c);
-    }
 
     public static RomanNumeralSymbol nullSymbol() {
         return new RomanNumeralSymbol("", 0);
