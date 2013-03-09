@@ -11,8 +11,8 @@ import static org.junit.Assert.*;
 
 @RunWith(Parameterized.class)
 public class RomanNumeralParserTest {
-    private int expectedValue;
-    private String roman;
+    private final int expectedValue;
+    private final String roman;
     private final String message;
 
     @Parameterized.Parameters
