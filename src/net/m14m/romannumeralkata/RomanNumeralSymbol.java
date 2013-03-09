@@ -2,40 +2,10 @@ package net.m14m.romannumeralkata;
 
 import java.util.*;
 
-import static java.util.Arrays.asList;
-import static net.m14m.romannumeralkata.RomanNumeralSymbol.RomanNumeralSystem.STANDARD;
+import static net.m14m.romannumeralkata.RomanNumeralSystem.STANDARD;
 
 public class RomanNumeralSymbol {
-    public static class RomanNumeralSystem {
-        public static final RomanNumeralSystem STANDARD = new RomanNumeralSystem(
-                new RomanNumeralSymbol("M", 1000),
-                new RomanNumeralSymbol("D", 500),
-                new RomanNumeralSymbol("C", 100),
-                new RomanNumeralSymbol("L", 50),
-                new RomanNumeralSymbol("X", 10),
-                new RomanNumeralSymbol("V", 5),
-                new RomanNumeralSymbol("I", 1)
-        );
-        public final List<RomanNumeralSymbol> symbols;
-        private final Map<Character, RomanNumeralSymbol> valuesOfLetters;
-
-        public RomanNumeralSystem(RomanNumeralSymbol... symbols) {
-            this.symbols = asList(symbols);
-            valuesOfLetters = new HashMap<Character, RomanNumeralSymbol>();
-            for (RomanNumeralSymbol symbol : symbols) {
-                valuesOfLetters.put(symbol.toChar(), symbol);
-            }
-        }
-
-        public RomanNumeralSymbol valueOf(char c) throws UnrecognizedSymbolException {
-            c = Character.toUpperCase(c);
-            if (!valuesOfLetters.containsKey(c)) throw new UnrecognizedSymbolException();
-            return valuesOfLetters.get(c);
-        }
-    }
-
     public static final List<RomanNumeralSymbol> ALL_SYMBOLS = STANDARD.symbols;
-
     private final String symbol;
     public final int value;
 
@@ -47,7 +17,7 @@ public class RomanNumeralSymbol {
         return new RomanNumeralSymbol("", 0);
     }
 
-    private RomanNumeralSymbol(String symbol, int value) {
+    public RomanNumeralSymbol(String symbol, int value) {
         this.symbol = symbol;
         this.value = value;
     }
@@ -56,7 +26,7 @@ public class RomanNumeralSymbol {
         return value > symbol.value;
     }
 
-    private Character toChar() {
+    public Character toChar() {
         return symbol.charAt(0);
     }
 
