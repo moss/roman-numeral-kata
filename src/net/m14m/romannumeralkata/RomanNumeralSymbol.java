@@ -26,7 +26,7 @@ public class RomanNumeralSymbol {
         return new RomanNumeralSymbol("", 0);
     }
 
-    private RomanNumeralSymbol(String symbol, int value) {
+    RomanNumeralSymbol(String symbol, int value) {
         this.symbol = symbol;
         this.value = value;
     }
