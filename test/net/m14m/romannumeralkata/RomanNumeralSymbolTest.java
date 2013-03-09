@@ -24,4 +24,9 @@ public class RomanNumeralSymbolTest {
         assertFalse("V", valueOf('v').outranks(valueOf('v')));
         assertFalse("X", valueOf('x').outranks(valueOf('x')));
     }
+
+    @Test(expected = RomanNumeralSymbol.UnrecognizedException.class)
+    public void throwsExceptionForUnrecognizedCharacters()
+            throws RomanNumeralSymbol.UnrecognizedException { valueOf('Z');
+    }
 }
