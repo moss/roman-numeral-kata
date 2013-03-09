@@ -9,7 +9,12 @@ public class ArabicNumeralParser {
     private static final Symbol V = new Symbol(5, "V");
     private static final Symbol X = new Symbol(10, "X");
     private static final Symbol NULL = new Symbol(0, "");
-    private static final List<Symbol> SYMBOLS = asList(X, V, I);
+    private static final List<Symbol> SYMBOLS = asList(
+            new Symbol(50, "L"),
+            X,
+            V,
+            I
+    );
 
     public String translate(Integer value) {
         if (value <= 0) return "ERROR";
