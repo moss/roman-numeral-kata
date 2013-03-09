@@ -31,4 +31,17 @@ public class RomanNumeralSymbol {
 
     public static class UnrecognizedException extends Exception {
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof RomanNumeralSymbol)) return false;
+        RomanNumeralSymbol that = (RomanNumeralSymbol) o;
+        return value == that.value;
+    }
+
+    @Override
+    public int hashCode() {
+        return value;
+    }
 }
