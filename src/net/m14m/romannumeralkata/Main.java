@@ -6,6 +6,7 @@ public class Main {
     private final BufferedReader input;
     private final PrintWriter output;
     private final RomanNumeralParser romanNumeralParser = new RomanNumeralParser();
+    private final ArabicNumeralParser arabicNumeralParser = new ArabicNumeralParser();
 
     public Main(Reader input, Writer output) {
         this.input = new BufferedReader(input);
@@ -18,7 +19,7 @@ public class Main {
             if (input.matches("[mdclxviMDCLXVI]+")) {
                 output.println(romanNumeralParser.translate(input));
             } else {
-                output.println("I");
+                output.println(arabicNumeralParser.translate(input));
             }
         }
     }

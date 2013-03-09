@@ -37,7 +37,7 @@ public class MainTest {
     @Test public void translatesArabicNumeralsIntoRomanCorrectly() throws IOException {
         givenInput("3\n");
         whenIRunTheApp();
-        expectOutput("III");
+        expectOutput("III\n");
     }
 
     private void givenInput(String input) {
