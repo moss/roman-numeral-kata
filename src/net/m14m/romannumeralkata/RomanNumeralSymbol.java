@@ -39,9 +39,6 @@ public class RomanNumeralSymbol {
         return symbol;
     }
 
-    public static class UnrecognizedException extends Exception {
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -53,5 +50,8 @@ public class RomanNumeralSymbol {
     @Override
     public int hashCode() {
         return value;
+    }
+
+    public static class UnrecognizedException extends Exception {
     }
 }
