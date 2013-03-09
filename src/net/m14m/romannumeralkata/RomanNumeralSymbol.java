@@ -4,7 +4,6 @@ import java.util.*;
 
 public class RomanNumeralSymbol {
     private static final Map<Character, Integer> valuesOfLetters = new HashMap<Character, Integer>() {{
-        put((char) 0, 0);
         put('i', 1);
         put('v', 5);
         put('x', 10);
