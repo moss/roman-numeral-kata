@@ -21,7 +21,7 @@ public class ArabicNumeralParser {
         int remainingValue = value;
         while (remainingValue > 0) {
             Symbol symbol = largestRelevantSymbol(remainingValue);
-            result.append(symbol.symbol);
+            result.append(symbol);
             remainingValue -= symbol.value;
         }
         return result.toString();
@@ -43,6 +43,10 @@ public class ArabicNumeralParser {
         private Symbol(int value, String symbol) {
             this.value = value;
             this.symbol = symbol;
+        }
+
+        public String toString() {
+            return symbol;
         }
     }
 }
