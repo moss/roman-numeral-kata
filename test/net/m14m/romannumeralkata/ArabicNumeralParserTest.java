@@ -29,6 +29,7 @@ public class ArabicNumeralParserTest {
                 {"LXVI", 66, "LXVI is 66"},
                 {"MDCLXVI", 1666, "MDCLXVI is 1666 (all recognized symbols)"},
                 {"IX", 9, "9 should be IX, not VIIII"},
+                {"IM", 999, "999 should be IM, not DCCCCLXXXXVIIII"},
         };
         return asList(parameters);
     }
