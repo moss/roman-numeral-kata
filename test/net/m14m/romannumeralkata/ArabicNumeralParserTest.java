@@ -27,6 +27,7 @@ public class ArabicNumeralParserTest {
                 {"VII", 7, "VII is 7"},
                 {"XI", 11, "XI is 11"},
                 {"LXVI", 66, "LXVI is 66"},
+                {"MDCLXVI", 1666, "MDCLXVI is 1666 (all recognized symbols)"}
         };
         return asList(parameters);
     }
