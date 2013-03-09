@@ -9,7 +9,7 @@ public class ArabicNumeralParser {
         int remainingValue = value;
         while (remainingValue > 0) {
             RomanNumeralSymbol symbol = largestRelevantSymbol(remainingValue);
-            if (largestRelevantSymbol(remainingValue + 1).value > symbol.value) {
+            if (largestRelevantSymbol(remainingValue + 1).outranks(symbol)) {
                 result.append("I");
                 remainingValue += 1;
             } else {
