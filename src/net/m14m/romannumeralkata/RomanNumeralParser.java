@@ -6,12 +6,12 @@ public class RomanNumeralParser {
     int translate(String input) {
         try {
             return translateUnsafe(input);
-        } catch (RomanNumeralSymbol.UnrecognizedException e) {
+        } catch (UnrecognizedSymbolException e) {
             return -1;
         }
     }
 
-    private int translateUnsafe(String input) throws RomanNumeralSymbol.UnrecognizedException {
+    private int translateUnsafe(String input) throws UnrecognizedSymbolException {
         Accumulator accumulator = new Accumulator();
         char[] chars = input.toLowerCase().toCharArray();
         for (int i = 0; i < chars.length; i++) {

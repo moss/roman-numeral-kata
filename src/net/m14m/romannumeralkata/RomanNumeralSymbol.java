@@ -27,9 +27,9 @@ public class RomanNumeralSymbol {
             }
         }
 
-        public RomanNumeralSymbol valueOf(char c) throws UnrecognizedException {
+        public RomanNumeralSymbol valueOf(char c) throws UnrecognizedSymbolException {
             c = Character.toUpperCase(c);
-            if (!valuesOfLetters.containsKey(c)) throw new UnrecognizedException();
+            if (!valuesOfLetters.containsKey(c)) throw new UnrecognizedSymbolException();
             return valuesOfLetters.get(c);
         }
     }
@@ -39,7 +39,7 @@ public class RomanNumeralSymbol {
     private final String symbol;
     public final int value;
 
-    public static RomanNumeralSymbol valueOf(char c) throws UnrecognizedException {
+    public static RomanNumeralSymbol valueOf(char c) throws UnrecognizedSymbolException {
         return STANDARD.valueOf(c);
     }
 
@@ -71,8 +71,5 @@ public class RomanNumeralSymbol {
 
     @Override public int hashCode() {
         return value;
-    }
-
-    public static class UnrecognizedException extends Exception {
     }
 }
