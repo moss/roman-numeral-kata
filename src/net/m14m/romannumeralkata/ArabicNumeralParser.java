@@ -4,22 +4,23 @@ public class ArabicNumeralParser {
     private static final Symbol I = new Symbol(1, "I");
     private static final Symbol V = new Symbol(5, "V");
     private static final Symbol X = new Symbol(10, "X");
+    private static final Symbol NULL = new Symbol(0, "");
 
     public String translate(Integer value) {
         if (value <= 0) return "ERROR";
         StringBuilder result = new StringBuilder();
         int remainingValue = value;
         while (remainingValue > 0) {
+            Symbol currentSymbol = NULL;
             if (remainingValue >= X.value) {
-                result.append(X.symbol);
-                remainingValue -= X.value;
+                currentSymbol = X;
             } else if (remainingValue >= V.value) {
-                result.append(V.symbol);
-                remainingValue -= V.value;
+                currentSymbol = V;
             } else if (remainingValue >= I.value) {
-                result.append(I.symbol);
-                remainingValue -= I.value;
+                currentSymbol = I;
             }
+            result.append(currentSymbol.symbol);
+            remainingValue -= currentSymbol.value;
         }
         return result.toString();
     }
