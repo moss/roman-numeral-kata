@@ -19,8 +19,7 @@ public class RomanNumeralSymbol {
     static {
         valuesOfLetters = new HashMap<Character, RomanNumeralSymbol>();
         for (RomanNumeralSymbol symbol : ALL_SYMBOLS) {
-            valuesOfLetters.put(Character.toLowerCase(symbol.toChar()), symbol);
-            valuesOfLetters.put(Character.toUpperCase(symbol.toChar()), symbol);
+            valuesOfLetters.put(symbol.toChar(), symbol);
         }
     }
 
@@ -28,6 +27,7 @@ public class RomanNumeralSymbol {
     public final int value;
 
     public static RomanNumeralSymbol valueOf(char c) throws UnrecognizedException {
+        c = Character.toUpperCase(c);
         if (!valuesOfLetters.containsKey(c)) throw new UnrecognizedException();
         return valuesOfLetters.get(c);
     }
