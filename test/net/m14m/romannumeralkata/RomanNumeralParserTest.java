@@ -34,6 +34,14 @@ public class RomanNumeralParserTest {
                 {14, "XIV", "alternating higher and lower values"},
                 {19, "XIX", "same symbol in different roles"},
                 {28, "XXVIII", "longer numbers"},
+                {50, "L", "L"},
+                {51, "LI", "LI"},
+                {100, "C", "C"},
+                {101, "CI", "CI"},
+                {500, "D", "D"},
+                {501, "DI", "DI"},
+                {1000, "M", "M"},
+                {1001, "MI", "MI"},
         };
         return asList(parameters);
     }
