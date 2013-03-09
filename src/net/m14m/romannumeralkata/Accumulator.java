@@ -8,7 +8,6 @@ public class Accumulator {
 
     public void push(RomanNumeralSymbol symbol) {
         combineValues(latestSymbol, symbol);
-        latestSymbol = symbol;
     }
 
     public int getValue() {
