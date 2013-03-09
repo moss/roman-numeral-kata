@@ -28,6 +28,12 @@ public class RomanNumeralSymbolTest {
         assertEquals(valueOf('i'), valueOf('I'));
     }
 
+    @Test public void toStringIsTheRomanNumeralSymbolInQuestion() throws RomanNumeralSymbol.UnrecognizedException {
+        assertEquals("I", valueOf('i').toString());
+        assertEquals("V", valueOf('v').toString());
+        assertEquals("M", valueOf('m').toString());
+    }
+
     @Test(expected = RomanNumeralSymbol.UnrecognizedException.class)
     public void throwsExceptionForUnrecognizedCharacters()
             throws RomanNumeralSymbol.UnrecognizedException { valueOf('Z');
