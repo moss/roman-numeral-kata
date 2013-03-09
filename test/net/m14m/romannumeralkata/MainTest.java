@@ -34,6 +34,12 @@ public class MainTest {
         expectOutput("I\n");
     }
 
+    @Test public void translatesArabicNumeralsIntoRomanCorrectly() throws IOException {
+        givenInput("3\n");
+        whenIRunTheApp();
+        expectOutput("III");
+    }
+
     private void givenInput(String input) {
         stdin = new StringReader(input);
     }
