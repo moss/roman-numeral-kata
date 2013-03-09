@@ -3,6 +3,7 @@ package net.m14m.romannumeralkata;
 import java.util.*;
 
 import static java.util.Arrays.asList;
+import static net.m14m.romannumeralkata.RomanNumeralSymbol.RomanNumeralSystem.STANDARD;
 
 public class RomanNumeralSymbol {
     public static class RomanNumeralSystem {
@@ -16,21 +17,19 @@ public class RomanNumeralSymbol {
                 new RomanNumeralSymbol("I", 1)
         );
         public final List<RomanNumeralSymbol> symbols;
+        private final Map<Character, RomanNumeralSymbol> valuesOfLetters;
 
         public RomanNumeralSystem(RomanNumeralSymbol... symbols) {
             this.symbols = asList(symbols);
+            valuesOfLetters = new HashMap<Character, RomanNumeralSymbol>();
+            for (RomanNumeralSymbol symbol : symbols) {
+                valuesOfLetters.put(symbol.toChar(), symbol);
+            }
         }
     }
 
-    public static final List<RomanNumeralSymbol> ALL_SYMBOLS = RomanNumeralSystem.STANDARD.symbols;
-    private static final Map<Character, RomanNumeralSymbol> valuesOfLetters;
-
-    static {
-        valuesOfLetters = new HashMap<Character, RomanNumeralSymbol>();
-        for (RomanNumeralSymbol symbol : ALL_SYMBOLS) {
-            valuesOfLetters.put(symbol.toChar(), symbol);
-        }
-    }
+    public static final List<RomanNumeralSymbol> ALL_SYMBOLS = STANDARD.symbols;
+    private static final Map<Character, RomanNumeralSymbol> valuesOfLetters = STANDARD.valuesOfLetters;
 
     private final String symbol;
     public final int value;
