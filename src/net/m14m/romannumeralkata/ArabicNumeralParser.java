@@ -37,8 +37,8 @@ public class ArabicNumeralParser {
     }
 
     private static class Symbol {
-        private int value;
-        private String symbol;
+        private final int value;
+        private final String symbol;
 
         private Symbol(int value, String symbol) {
             this.value = value;
