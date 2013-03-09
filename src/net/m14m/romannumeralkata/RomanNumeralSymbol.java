@@ -24,13 +24,4 @@ public class RomanNumeralSymbol {
     @Override public String toString() {
         return symbol;
     }
-
-    @Override public boolean equals(Object that) {
-        if (!(that instanceof RomanNumeralSymbol)) return false;
-        return this.value == ((RomanNumeralSymbol) that).value;
-    }
-
-    @Override public int hashCode() {
-        return value;
-    }
 }
