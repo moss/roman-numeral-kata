@@ -28,6 +28,12 @@ public class MainTest {
         expectOutput("2\n1\n");
     }
 
+    @Test public void translatesArabicNumeralsIntoRoman() throws IOException {
+        givenInput("1\n");
+        whenIRunTheApp();
+        expectOutput("I\n");
+    }
+
     private void givenInput(String input) {
         stdin = new StringReader(input);
     }
