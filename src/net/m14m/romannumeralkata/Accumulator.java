@@ -11,7 +11,7 @@ public class Accumulator {
     }
 
     public int getValue() {
-        combineValues(nullSymbol());
+        push(nullSymbol());
         return value;
     }
 
