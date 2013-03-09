@@ -29,4 +29,27 @@ public class RomanNumeralSymbolTest {
     public void throwsExceptionForUnrecognizedCharacters()
             throws RomanNumeralSymbol.UnrecognizedException { valueOf('Z');
     }
+
+    @Test public void symbolsAreOnlyEqualToTheSameSymbol() throws RomanNumeralSymbol.UnrecognizedException {
+        assertConsistentlyEqual('i', 'i');
+        assertConsistentlyEqual('v', 'v');
+        assertConsistentlyEqual('x', 'x');
+        assertConsistentlyUnequal('i', 'v');
+        assertConsistentlyUnequal('v', 'x');
+        assertConsistentlyUnequal('x', 'i');
+    }
+
+    private void assertConsistentlyEqual(char oneChar, char otherChar) throws RomanNumeralSymbol.UnrecognizedException {
+        assertTrue(oneChar + " = " + otherChar, valueOf(oneChar).equals(valueOf(otherChar)));
+        assertTrue(otherChar + " = " + oneChar, valueOf(otherChar).equals(valueOf(oneChar)));
+        assertTrue(oneChar + " hashcode = " + otherChar + " hashcode",
+                valueOf(oneChar).hashCode() == valueOf(otherChar).hashCode());
+    }
+
+    private void assertConsistentlyUnequal(char oneChar, char otherChar) throws RomanNumeralSymbol.UnrecognizedException {
+        assertFalse(oneChar + " != " + otherChar, valueOf(oneChar).equals(valueOf(otherChar)));
+        assertFalse(otherChar + " != " + oneChar, valueOf(otherChar).equals(valueOf(oneChar)));
+        assertFalse(oneChar + " hashcode != " + otherChar + " hashcode",
+                valueOf(oneChar).hashCode() == valueOf(otherChar).hashCode());
+    }
 }
