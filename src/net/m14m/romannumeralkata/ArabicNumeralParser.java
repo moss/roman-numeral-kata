@@ -11,18 +11,23 @@ public class ArabicNumeralParser {
         StringBuilder result = new StringBuilder();
         int remainingValue = value;
         while (remainingValue > 0) {
-            Symbol currentSymbol = NULL;
-            if (remainingValue >= X.value) {
-                currentSymbol = X;
-            } else if (remainingValue >= V.value) {
-                currentSymbol = V;
-            } else if (remainingValue >= I.value) {
-                currentSymbol = I;
-            }
-            result.append(currentSymbol.symbol);
-            remainingValue -= currentSymbol.value;
+            Symbol symbol = largestRelevantSymbol(remainingValue);
+            result.append(symbol.symbol);
+            remainingValue -= symbol.value;
         }
         return result.toString();
+    }
+
+    private Symbol largestRelevantSymbol(int remainingValue) {
+        Symbol currentSymbol = NULL;
+        if (remainingValue >= X.value) {
+            currentSymbol = X;
+        } else if (remainingValue >= V.value) {
+            currentSymbol = V;
+        } else if (remainingValue >= I.value) {
+            currentSymbol = I;
+        }
+        return currentSymbol;
     }
 
     private static class Symbol {
