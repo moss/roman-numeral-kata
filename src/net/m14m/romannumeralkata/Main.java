@@ -19,7 +19,7 @@ public class Main {
             if (input.matches("[mdclxviMDCLXVI]+")) {
                 output.println(romanNumeralParser.translate(input));
             } else {
-                output.println(arabicNumeralParser.translate(input));
+                output.println(arabicNumeralParser.translate(Integer.valueOf(input)));
             }
         }
     }
