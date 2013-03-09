@@ -22,6 +22,7 @@ public class ArabicNumeralParserTest {
                 {"III", 3, "III is 3"},
                 {"V", 5, "V is 5"},
                 {"VI", 6, "VI is 6"},
+                {"VII", 7, "VII is 7"},
         };
         return asList(parameters);
     }
