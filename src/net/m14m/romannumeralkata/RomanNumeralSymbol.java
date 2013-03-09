@@ -39,16 +39,12 @@ public class RomanNumeralSymbol {
         return symbol;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof RomanNumeralSymbol)) return false;
-        RomanNumeralSymbol that = (RomanNumeralSymbol) o;
-        return value == that.value;
+    @Override public boolean equals(Object that) {
+        if (!(that instanceof RomanNumeralSymbol)) return false;
+        return this.value == ((RomanNumeralSymbol) that).value;
     }
 
-    @Override
-    public int hashCode() {
+    @Override public int hashCode() {
         return value;
     }
 
