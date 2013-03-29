@@ -8,7 +8,7 @@ public class Main {
     private final RomanNumeralParser romanNumeralParser = new RomanNumeralParser();
     private final Formatter romanNumeralFormatter = new RomanNumeralFormatter();
     private final ArabicNumeralParser arabicNumeralParser = new ArabicNumeralParser();
-    private final ArabicNumeralFormatter arabicNumeralFormatter = new ArabicNumeralFormatter();
+    private final Formatter arabicNumeralFormatter = new ArabicNumeralFormatter();
 
     public Main(Reader input, Writer output) {
         this.input = new BufferedReader(input);
