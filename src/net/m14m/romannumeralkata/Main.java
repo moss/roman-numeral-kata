@@ -18,12 +18,13 @@ public class Main {
     public void execute() throws IOException {
         String input;
         while ((input = this.input.readLine()) != null) {
+            int value;
             if (input.matches("[mdclxviMDCLXVI]+")) {
-                int value = romanNumeralParser.parseValue(input);
+                value = romanNumeralParser.parseValue(input);
                 String displayValue = arabicNumeralFormatter.format(value);
                 output.println(displayValue);
             } else {
-                int value = arabicNumeralParser.parseValue(input);
+                value = arabicNumeralParser.parseValue(input);
                 String displayValue = romanNumeralFormatter.format(value);
                 output.println(displayValue);
             }
