@@ -8,6 +8,7 @@ public class Main {
     private final RomanNumeralParser romanNumeralParser = new RomanNumeralParser();
     private final RomanNumeralFormatter romanNumeralFormatter = new RomanNumeralFormatter();
     private final ArabicNumeralParser arabicNumeralParser = new ArabicNumeralParser();
+    private final ArabicNumeralFormatter arabicNumeralFormatter = new ArabicNumeralFormatter();
 
     public Main(Reader input, Writer output) {
         this.input = new BufferedReader(input);
@@ -19,7 +20,7 @@ public class Main {
         while ((input = this.input.readLine()) != null) {
             if (input.matches("[mdclxviMDCLXVI]+")) {
                 int value = romanNumeralParser.parseValue(input);
-                String displayValue = format(value);
+                String displayValue = arabicNumeralFormatter.format(value);
                 output.println(displayValue);
             } else {
                 int value = arabicNumeralParser.parseValue(input);
@@ -27,9 +28,5 @@ public class Main {
                 output.println(displayValue);
             }
         }
-    }
-
-    private String format(int value) {
-        return String.valueOf(value);
     }
 }
