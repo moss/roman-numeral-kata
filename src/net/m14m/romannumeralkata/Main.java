@@ -17,9 +17,13 @@ public class Main {
         String input;
         while ((input = this.input.readLine()) != null) {
             if (input.matches("[mdclxviMDCLXVI]+")) {
-                output.println(romanNumeralParser.translate(input));
+                int value = romanNumeralParser.translate(input);
+                String displayValue = String.valueOf(value);
+                output.println(displayValue);
             } else {
-                output.println(arabicNumeralParser.translate(Integer.valueOf(input)));
+                Integer value = Integer.valueOf(input);
+                String displayValue = arabicNumeralParser.translate(value);
+                output.println(displayValue);
             }
         }
     }
