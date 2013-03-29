@@ -19,15 +19,16 @@ public class Main {
         String input;
         while ((input = this.input.readLine()) != null) {
             int value;
+            Formatter formatter;
             if (input.matches("[mdclxviMDCLXVI]+")) {
                 value = romanNumeralParser.parseValue(input);
-                String displayValue = arabicNumeralFormatter.format(value);
-                output.println(displayValue);
+                formatter = arabicNumeralFormatter;
             } else {
                 value = arabicNumeralParser.parseValue(input);
-                String displayValue = romanNumeralFormatter.format(value);
-                output.println(displayValue);
+                formatter = romanNumeralFormatter;
             }
+            String displayValue = formatter.format(value);
+            output.println(displayValue);
         }
     }
 }
