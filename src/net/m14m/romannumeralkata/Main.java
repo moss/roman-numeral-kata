@@ -6,7 +6,7 @@ public class Main {
     private final BufferedReader input;
     private final PrintWriter output;
     private final RomanNumeralParser romanNumeralParser = new RomanNumeralParser();
-    private final ArabicNumeralParser arabicNumeralParser = new ArabicNumeralParser();
+    private final RomanNumeralFormatter romanNumeralFormatter = new RomanNumeralFormatter();
 
     public Main(Reader input, Writer output) {
         this.input = new BufferedReader(input);
@@ -22,7 +22,7 @@ public class Main {
                 output.println(displayValue);
             } else {
                 Integer value = Integer.valueOf(input);
-                String displayValue = arabicNumeralParser.translate(value);
+                String displayValue = romanNumeralFormatter.format(value);
                 output.println(displayValue);
             }
         }

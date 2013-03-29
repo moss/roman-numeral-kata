@@ -2,8 +2,8 @@ package net.m14m.romannumeralkata;
 
 import static net.m14m.romannumeralkata.RomanNumeralSystem.STANDARD;
 
-public class ArabicNumeralParser {
-    public String translate(Integer value) {
+public class RomanNumeralFormatter {
+    public String format(Integer value) {
         if (value <= 0) return "ERROR";
         StringBuilder result = new StringBuilder();
         int remainingValue = value;

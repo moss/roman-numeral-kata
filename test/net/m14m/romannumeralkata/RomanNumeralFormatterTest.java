@@ -10,7 +10,7 @@ import static java.util.Arrays.asList;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(Parameterized.class)
-public class ArabicNumeralParserTest {
+public class RomanNumeralFormatterTest {
     private final String expectedRoman;
     private final int value;
     private final String message;
@@ -34,7 +34,7 @@ public class ArabicNumeralParserTest {
         return asList(parameters);
     }
 
-    public ArabicNumeralParserTest(String expectedRoman, int value, String message) {
+    public RomanNumeralFormatterTest(String expectedRoman, int value, String message) {
         this.expectedRoman = expectedRoman;
         this.value = value;
         this.message = message;
@@ -42,6 +42,6 @@ public class ArabicNumeralParserTest {
 
     @Test public void shouldTranslateArabicNumerals() {
         assertEquals(message + ": " + value, expectedRoman,
-                new ArabicNumeralParser().translate(value));
+                new RomanNumeralFormatter().format(value));
     }
 }
