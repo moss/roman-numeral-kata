@@ -6,7 +6,7 @@ public class Main {
     private final BufferedReader input;
     private final PrintWriter output;
     private final RomanNumeralParser romanNumeralParser = new RomanNumeralParser();
-    private final RomanNumeralFormatter romanNumeralFormatter = new RomanNumeralFormatter();
+    private final Formatter romanNumeralFormatter = new RomanNumeralFormatter();
     private final ArabicNumeralParser arabicNumeralParser = new ArabicNumeralParser();
     private final ArabicNumeralFormatter arabicNumeralFormatter = new ArabicNumeralFormatter();
 

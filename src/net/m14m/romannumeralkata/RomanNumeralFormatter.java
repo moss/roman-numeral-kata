@@ -2,7 +2,7 @@ package net.m14m.romannumeralkata;
 
 import static net.m14m.romannumeralkata.RomanNumeralSystem.STANDARD;
 
-public class RomanNumeralFormatter {
+public class RomanNumeralFormatter implements Formatter {
     public String format(Integer value) {
         if (value <= 0) return "ERROR";
         StringBuilder result = new StringBuilder();
