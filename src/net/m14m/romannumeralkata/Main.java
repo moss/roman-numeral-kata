@@ -17,14 +17,22 @@ public class Main {
         String input;
         while ((input = this.input.readLine()) != null) {
             if (input.matches("[mdclxviMDCLXVI]+")) {
-                int value = romanNumeralParser.translate(input);
-                String displayValue = String.valueOf(value);
+                int value = romanNumeralParser.parseValue(input);
+                String displayValue = format(value);
                 output.println(displayValue);
             } else {
-                Integer value = Integer.valueOf(input);
+                int value = parseValue(input);
                 String displayValue = romanNumeralFormatter.format(value);
                 output.println(displayValue);
             }
         }
+    }
+
+    private int parseValue(String input) {
+        return Integer.valueOf(input);
+    }
+
+    private String format(int value) {
+        return String.valueOf(value);
     }
 }

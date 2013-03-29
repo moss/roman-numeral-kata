@@ -54,6 +54,6 @@ public class RomanNumeralParserTest {
 
     @Test public void shouldTranslateRomanNumerals() {
         assertEquals(message + ": " + roman, expectedValue,
-                new RomanNumeralParser().translate(roman));
+                new RomanNumeralParser().parseValue(roman));
     }
 }

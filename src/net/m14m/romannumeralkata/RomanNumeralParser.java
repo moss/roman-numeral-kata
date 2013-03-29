@@ -3,7 +3,7 @@ package net.m14m.romannumeralkata;
 import static net.m14m.romannumeralkata.RomanNumeralSystem.STANDARD;
 
 public class RomanNumeralParser {
-    int translate(String input) {
+    int parseValue(String input) {
         try {
             return translateUnsafe(input);
         } catch (UnrecognizedSymbolException e) {
