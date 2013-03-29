@@ -40,6 +40,12 @@ public class MainTest {
         expectOutput("III\n");
     }
 
+    @Test public void addsTwoRomanNumeralsAndDisplaysTheResultAsARomanNumeral() throws IOException {
+        givenInput("II + III");
+        whenIRunTheApp();
+        expectOutput("V");
+    }
+
     private void givenInput(String input) {
         stdin = new StringReader(input);
     }
