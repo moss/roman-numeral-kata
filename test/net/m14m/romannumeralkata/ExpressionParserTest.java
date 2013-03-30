@@ -20,4 +20,9 @@ public class ExpressionParserTest {
         assertThat(parser.parse("3").getValue(), is(3));
         assertThat(parser.parse("9").getValue(), is(9));
     }
+
+    @Test(expected = IllegalExpressionError.class)
+    public void shouldDisallowBadExpressions() {
+        parser.parse("abc");
+    }
 }
