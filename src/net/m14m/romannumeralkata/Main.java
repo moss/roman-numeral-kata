@@ -26,7 +26,7 @@ public class Main {
                 String displayValue = expression.getFormatter().format(expression.getValue());
                 output.println(displayValue);
             } catch (IllegalExpressionError illegalExpressionError) {
-                throw new RuntimeException(illegalExpressionError);
+                output.println("ERROR");
             }
         }
     }

@@ -43,7 +43,7 @@ public class MainTest {
     @Test public void showsErrorMessageOnBadExpression() throws IOException {
         givenInput("abc\n");
         whenIRunTheApp();
-        expectOutput("ERROR");
+        expectOutput("ERROR\n");
     }
 
     @Ignore @Test public void addsTwoRomanNumeralsAndDisplaysTheResultAsARomanNumeral() throws IOException {
