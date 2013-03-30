@@ -21,14 +21,64 @@ public class Main {
             int value;
             Formatter formatter;
             if (input.matches("[mdclxviMDCLXVI]+")) {
-                value = romanNumeralParser.parseValue(input);
-                formatter = arabicNumeralFormatter;
+                RomanNumeral romanNumeral = new RomanNumeral(input).invoke();
+                value = romanNumeral.getValue();
+                formatter = romanNumeral.getFormatter();
             } else {
-                value = arabicNumeralParser.parseValue(input);
-                formatter = romanNumeralFormatter;
+                ArabicNumeral arabicNumeral = new ArabicNumeral(input).invoke();
+                formatter = arabicNumeral.getFormatter();
+                value = arabicNumeral.getValue();
             }
             String displayValue = formatter.format(value);
             output.println(displayValue);
+        }
+    }
+
+    public class RomanNumeral {
+        private String input;
+        private int value;
+        private Formatter formatter;
+
+        public RomanNumeral(String input) {
+            this.input = input;
+        }
+
+        public int getValue() {
+            return value;
+        }
+
+        public Formatter getFormatter() {
+            return formatter;
+        }
+
+        public RomanNumeral invoke() {
+            value = romanNumeralParser.parseValue(input);
+            formatter = arabicNumeralFormatter;
+            return this;
+        }
+    }
+
+    public class ArabicNumeral {
+        private String input;
+        private int value;
+        private Formatter formatter;
+
+        public ArabicNumeral(String input) {
+            this.input = input;
+        }
+
+        public int getValue() {
+            return value;
+        }
+
+        public Formatter getFormatter() {
+            return formatter;
+        }
+
+        public ArabicNumeral invoke() {
+            value = arabicNumeralParser.parseValue(input);
+            formatter = romanNumeralFormatter;
+            return this;
         }
     }
 }
