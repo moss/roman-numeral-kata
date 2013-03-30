@@ -1,5 +1,7 @@
 package net.m14m.romannumeralkata;
 
+import java.util.regex.*;
+
 public class ExpressionParser {
     private final NumeralParser romanNumeralParser;
     private final Formatter romanNumeralFormatter;
@@ -16,7 +18,9 @@ public class ExpressionParser {
         this.arabicNumeralFormatter = arabicNumeralFormatter;
     }
 
-    public Expression parse(String input) {
+    public Expression parse(String input) throws IllegalExpressionError {
+        Matcher matcher = Pattern.compile("([mdclxviMDCLXVI]+|\\d+)").matcher(input);
+        if (!matcher.matches()) throw new IllegalExpressionError();
         Expression expression;
         if (input.matches("[mdclxviMDCLXVI]+")) {
             expression = new Numeral(arabicNumeralFormatter, romanNumeralParser, input);

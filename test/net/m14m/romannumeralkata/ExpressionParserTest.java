@@ -11,18 +11,18 @@ public class ExpressionParserTest {
             new ArabicNumeralParser(), new ArabicNumeralFormatter()
     );
 
-    @Test public void shouldParseRomanNumeralExpressions() {
+    @Test public void shouldParseRomanNumeralExpressions() throws IllegalExpressionError {
         assertThat(parser.parse("iii").getValue(), is(3));
         assertThat(parser.parse("IX").getValue(), is(9));
     }
 
-    @Test public void shouldParseArabicNumeralExpressions() {
+    @Test public void shouldParseArabicNumeralExpressions() throws IllegalExpressionError {
         assertThat(parser.parse("3").getValue(), is(3));
         assertThat(parser.parse("9").getValue(), is(9));
     }
 
     @Test(expected = IllegalExpressionError.class)
-    public void shouldDisallowBadExpressions() {
+    public void shouldDisallowBadExpressions() throws IllegalExpressionError {
         parser.parse("abc");
     }
 }

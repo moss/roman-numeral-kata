@@ -21,9 +21,13 @@ public class Main {
     public void execute() throws IOException {
         String input;
         while ((input = this.input.readLine()) != null) {
-            Expression expression = expressionParser.parse(input);
-            String displayValue = expression.getFormatter().format(expression.getValue());
-            output.println(displayValue);
+            try {
+                Expression expression = expressionParser.parse(input);
+                String displayValue = expression.getFormatter().format(expression.getValue());
+                output.println(displayValue);
+            } catch (IllegalExpressionError illegalExpressionError) {
+                throw new RuntimeException(illegalExpressionError);
+            }
         }
     }
 }
