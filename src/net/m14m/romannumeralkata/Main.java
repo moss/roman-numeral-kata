@@ -18,14 +18,19 @@ public class Main {
     public void execute() throws IOException {
         String input;
         while ((input = this.input.readLine()) != null) {
-            Expression expression;
-            if (input.matches("[mdclxviMDCLXVI]+")) {
-                expression = new Numeral(arabicNumeralFormatter, romanNumeralParser, input);
-            } else {
-                expression = new Numeral(romanNumeralFormatter, arabicNumeralParser, input);
-            }
+            Expression expression = parse(input);
             String displayValue = expression.getFormatter().format(expression.getValue());
             output.println(displayValue);
         }
+    }
+
+    public Expression parse(String input) {
+        Expression expression;
+        if (input.matches("[mdclxviMDCLXVI]+")) {
+            expression = new Numeral(arabicNumeralFormatter, romanNumeralParser, input);
+        } else {
+            expression = new Numeral(romanNumeralFormatter, arabicNumeralParser, input);
+        }
+        return expression;
     }
 }
