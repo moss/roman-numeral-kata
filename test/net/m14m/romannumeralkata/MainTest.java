@@ -46,7 +46,7 @@ public class MainTest {
         expectOutput("ERROR\n");
     }
 
-    @Ignore @Test public void addsTwoRomanNumeralsAndDisplaysTheResultAsARomanNumeral() throws IOException {
+    @Test public void addsTwoRomanNumeralsAndDisplaysTheResultAsARomanNumeral() throws IOException {
         givenInput("II + III");
         whenIRunTheApp();
         expectOutput("V");
