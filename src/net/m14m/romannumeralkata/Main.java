@@ -36,14 +36,13 @@ public class Main {
 
     public class RomanNumeral {
         private String input;
-        private int value;
 
         public RomanNumeral(String input) {
             this.input = input;
         }
 
         public int getValue() {
-            return value;
+            return romanNumeralParser.parseValue(input);
         }
 
         public Formatter getFormatter() {
@@ -51,21 +50,19 @@ public class Main {
         }
 
         public RomanNumeral invoke() {
-            value = romanNumeralParser.parseValue(input);
             return this;
         }
     }
 
     public class ArabicNumeral {
         private String input;
-        private int value;
 
         public ArabicNumeral(String input) {
             this.input = input;
         }
 
         public int getValue() {
-            return value;
+            return arabicNumeralParser.parseValue(input);
         }
 
         public Formatter getFormatter() {
@@ -73,7 +70,6 @@ public class Main {
         }
 
         public ArabicNumeral invoke() {
-            value = arabicNumeralParser.parseValue(input);
             return this;
         }
     }
