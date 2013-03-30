@@ -18,18 +18,18 @@ public class Main {
     public void execute() throws IOException {
         String input;
         while ((input = this.input.readLine()) != null) {
-            Numeral numeral;
+            Expression expression;
             if (input.matches("[mdclxviMDCLXVI]+")) {
-                numeral = new Numeral(arabicNumeralFormatter, romanNumeralParser, input);
+                expression = new Numeral(arabicNumeralFormatter, romanNumeralParser, input);
             } else {
-                numeral = new Numeral(romanNumeralFormatter, arabicNumeralParser, input);
+                expression = new Numeral(romanNumeralFormatter, arabicNumeralParser, input);
             }
-            String displayValue = numeral.getFormatter().format(numeral.getValue());
+            String displayValue = expression.getFormatter().format(expression.getValue());
             output.println(displayValue);
         }
     }
 
-    public static class Numeral {
+    public static class Numeral implements Expression {
         private String input;
         private Formatter formatter;
         private NumeralParser parser;
