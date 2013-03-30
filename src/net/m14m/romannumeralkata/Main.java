@@ -21,11 +21,11 @@ public class Main {
             int value;
             Formatter formatter;
             if (input.matches("[mdclxviMDCLXVI]+")) {
-                RomanNumeral romanNumeral = new RomanNumeral(input).invoke();
+                RomanNumeral romanNumeral = new RomanNumeral(input);
                 value = romanNumeral.getValue();
                 formatter = romanNumeral.getFormatter();
             } else {
-                ArabicNumeral arabicNumeral = new ArabicNumeral(input).invoke();
+                ArabicNumeral arabicNumeral = new ArabicNumeral(input);
                 formatter = arabicNumeral.getFormatter();
                 value = arabicNumeral.getValue();
             }
@@ -48,10 +48,6 @@ public class Main {
         public Formatter getFormatter() {
             return arabicNumeralFormatter;
         }
-
-        public RomanNumeral invoke() {
-            return this;
-        }
     }
 
     public class ArabicNumeral {
@@ -67,10 +63,6 @@ public class Main {
 
         public Formatter getFormatter() {
             return romanNumeralFormatter;
-        }
-
-        public ArabicNumeral invoke() {
-            return this;
         }
     }
 }
