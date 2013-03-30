@@ -40,6 +40,12 @@ public class MainTest {
         expectOutput("III\n");
     }
 
+    @Test public void showsErrorMessageOnBadExpression() throws IOException {
+        givenInput("abc\n");
+        whenIRunTheApp();
+        expectOutput("ERROR");
+    }
+
     @Ignore @Test public void addsTwoRomanNumeralsAndDisplaysTheResultAsARomanNumeral() throws IOException {
         givenInput("II + III");
         whenIRunTheApp();
