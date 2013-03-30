@@ -5,9 +5,9 @@ import java.io.*;
 public class Main {
     private final BufferedReader input;
     private final PrintWriter output;
-    private final RomanNumeralParser romanNumeralParser = new RomanNumeralParser();
+    private final NumeralParser romanNumeralParser = new RomanNumeralParser();
     private final Formatter romanNumeralFormatter = new RomanNumeralFormatter();
-    private final ArabicNumeralParser arabicNumeralParser = new ArabicNumeralParser();
+    private final NumeralParser arabicNumeralParser = new ArabicNumeralParser();
     private final Formatter arabicNumeralFormatter = new ArabicNumeralFormatter();
 
     public Main(Reader input, Writer output) {
@@ -38,9 +38,9 @@ public class Main {
     public static class Numeral {
         private String input;
         private Formatter formatter;
-        private RomanNumeralParser parser;
+        private NumeralParser parser;
 
-        public Numeral(Formatter formatter, RomanNumeralParser parser, String input) {
+        public Numeral(Formatter formatter, NumeralParser parser, String input) {
             this.input = input;
             this.formatter = formatter;
             this.parser = parser;
