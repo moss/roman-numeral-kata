@@ -21,7 +21,8 @@ public class Main {
             int value;
             Formatter formatter;
             if (input.matches("[mdclxviMDCLXVI]+")) {
-                RomanNumeral romanNumeral = new RomanNumeral(input);
+                RomanNumeral romanNumeral = new RomanNumeral(arabicNumeralFormatter,
+                        romanNumeralParser, input);
                 value = romanNumeral.getValue();
                 formatter = romanNumeral.getFormatter();
             } else {
@@ -34,11 +35,15 @@ public class Main {
         }
     }
 
-    public class RomanNumeral {
+    public static class RomanNumeral {
         private String input;
+        private Formatter formatter;
+        private RomanNumeralParser romanNumeralParser;
 
-        public RomanNumeral(String input) {
+        public RomanNumeral(Formatter formatter, RomanNumeralParser romanNumeralParser, String input) {
             this.input = input;
+            this.formatter = formatter;
+            this.romanNumeralParser = romanNumeralParser;
         }
 
         public int getValue() {
@@ -46,7 +51,7 @@ public class Main {
         }
 
         public Formatter getFormatter() {
-            return arabicNumeralFormatter;
+            return formatter;
         }
     }
 
