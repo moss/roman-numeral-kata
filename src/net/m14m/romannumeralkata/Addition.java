@@ -10,7 +10,7 @@ public class Addition implements Expression {
     }
 
     public int getValue() {
-        return 5;
+        return first.getValue() + second.getValue();
     }
 
     public Formatter getFormatter() {
