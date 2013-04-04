@@ -14,6 +14,6 @@ public class Addition implements Expression {
     }
 
     public Formatter getFormatter() {
-        return second.getFormatter();
+        return first.getFormatter();
     }
 }
