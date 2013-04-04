@@ -19,6 +19,9 @@ public class ExpressionParser {
     }
 
     public Expression parse(String input) throws IllegalExpressionError {
+        if (input.contains("+")) {
+            return parseAddition(input);
+        }
         Matcher matcher = Pattern.compile("([mdclxviMDCLXVI]+|\\d+)").matcher(input);
         if (!matcher.matches()) throw new IllegalExpressionError();
         Expression expression;
@@ -28,5 +31,10 @@ public class ExpressionParser {
             expression = new Numeral(romanNumeralFormatter, arabicNumeralParser, input);
         }
         return expression;
+    }
+
+    private Expression parseAddition(String input) throws IllegalExpressionError {
+        String[] parts = input.split("\\s+\\+\\s+");
+        return new Addition(parse(parts[0]), parse(parts[1]));
     }
 }

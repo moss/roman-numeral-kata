@@ -46,10 +46,10 @@ public class MainTest {
         expectOutput("ERROR\n");
     }
 
-    @Test public void addsTwoRomanNumeralsAndDisplaysTheResultAsARomanNumeral() throws IOException {
-        givenInput("II + III");
+    @Test public void addsTwoRomanNumeralsAndDisplaysTheResultAsAnArabicNumeral() throws IOException {
+        givenInput("II + III\n");
         whenIRunTheApp();
-        expectOutput("V");
+        expectOutput("5\n");
     }
 
     private void givenInput(String input) {
